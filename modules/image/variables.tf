@@ -9,8 +9,7 @@ variable "datastore_id" {
 }
 
 variable "target_node" {
-  type    = string
-  default = "yukari"
+  type = string
 }
 
 variable "image_url" {

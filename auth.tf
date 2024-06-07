@@ -17,3 +17,15 @@ variable "proxmox_endpoint" {
 variable "ssh_username" {
   type = string
 }
+
+variable "ssh_key_contents" {
+  type = string
+}
+
+variable "vm_username" {
+  type = string
+}
+
+variable "vm_vlan_id" {
+  type = number
+}

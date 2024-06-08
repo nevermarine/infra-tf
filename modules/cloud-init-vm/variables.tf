@@ -67,3 +67,8 @@ variable "timezone" {
   type    = string
   default = "Europe/Moscow"
 }
+
+variable "packages" {
+  type    = list(string)
+  default = ["tmux", "vim", "htop", "iftop", "iotop", "fastfetch"]
+}

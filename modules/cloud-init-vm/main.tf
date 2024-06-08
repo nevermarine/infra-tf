@@ -74,7 +74,7 @@ resource "proxmox_virtual_environment_file" "cloud_config" {
     runcmd:
         - yum update  -y
         - yum install -y epel-release
-        - yum install -y tmux vim htop iftop iotop fastfetch
+        - yum install -y ${join(" ", var.packages)}
         - echo "done" > /tmp/cloud-config.done
     timezone: ${var.timezone}
     EOF

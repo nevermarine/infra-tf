@@ -2,8 +2,6 @@ resource "proxmox_virtual_environment_vm" "vm" {
   name      = var.name
   node_name = var.node_name
   vm_id     = var.vm_id
-  # clone      = var.template
-  # full_clone = var.full_clone
 
   cpu {
     type    = var.cpu_type
@@ -28,10 +26,6 @@ resource "proxmox_virtual_environment_vm" "vm" {
   }
 
   initialization {
-    # user_account {
-    #   username = var.default_user.name
-    #   password = var.default_user.pass
-    # }
     ip_config {
       ipv4 {
         address = var.net.addr
@@ -61,9 +55,7 @@ resource "proxmox_virtual_environment_file" "cloud_config" {
     #cloud-config
     hostname: ${var.name}
     fqdn: ${var.name}.home
-    # preserve_hostname: False
     users:
-      # - default
       - name: ${var.default_user.name}
         ssh_authorized_keys:
           - ${var.default_user.ssh_key}
@@ -79,6 +71,6 @@ resource "proxmox_virtual_environment_file" "cloud_config" {
     timezone: ${var.timezone}
     EOF
 
-    file_name = "cloud-config.yaml"
+    file_name = "cloud-config-${var.name}-${var.vm_id}.yaml"
   }
 }

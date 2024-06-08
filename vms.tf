@@ -1,6 +1,6 @@
 module "testvm" {
   source    = "./modules/cloud-init-vm"
-  name      = "module-test-vm.home"
+  name      = "module-test-vm"
   vm_id     = "222"
   node_name = var.target_node
   size = {
@@ -10,7 +10,7 @@ module "testvm" {
   }
   default_user = {
     name    = var.vm_username
-    ssh_key = var.ssh_key_contents
+    ssh_key = file(var.ssh_public_key)
   }
   net = {
     vlan_id = var.vm_vlan_id

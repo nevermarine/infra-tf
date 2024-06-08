@@ -10,15 +10,15 @@ variable "ssh_key" {
   type = string
 }
 
+variable "ssh_public_key" {
+  type = string
+}
+
 variable "proxmox_endpoint" {
   type = string
 }
 
 variable "ssh_username" {
-  type = string
-}
-
-variable "ssh_key_contents" {
   type = string
 }
 

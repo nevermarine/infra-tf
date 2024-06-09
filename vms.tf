@@ -44,7 +44,6 @@ module "NAS" {
     file_id      = module.almalinux9.image_id
     datastore_id = "local-lvm"
   }
-  # passthrough_disk = ["/dev/sda", "/dev/sdb"]
   passthrough_disk = [
     {
       path = "/dev/sda"

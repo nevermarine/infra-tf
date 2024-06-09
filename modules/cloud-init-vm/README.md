@@ -36,6 +36,7 @@ No modules.
 | <a name="input_node_name"></a> [node\_name](#input\_node\_name) | n/a | `string` | n/a | yes |
 | <a name="input_os_type"></a> [os\_type](#input\_os\_type) | n/a | `string` | `"l26"` | no |
 | <a name="input_packages"></a> [packages](#input\_packages) | n/a | `list(string)` | <pre>[<br>  "tmux",<br>  "vim",<br>  "htop",<br>  "iftop",<br>  "iotop",<br>  "fastfetch"<br>]</pre> | no |
+| <a name="input_passthrough_disk"></a> [passthrough\_disk](#input\_passthrough\_disk) | Path(s) to block device for disk passthrough | <pre>list(object({<br>    path = string<br>    size = number<br>    }<br>  ))</pre> | `[]` | no |
 | <a name="input_size"></a> [size](#input\_size) | n/a | <pre>object(<br>    {<br>      memory  = optional(number, 2048)<br>      cores   = optional(number, 2)<br>      sockets = optional(number, 1)<br>      disk    = optional(number, 30)<br>    }<br>  )</pre> | n/a | yes |
 | <a name="input_timezone"></a> [timezone](#input\_timezone) | n/a | `string` | `"Europe/Moscow"` | no |
 | <a name="input_vm_id"></a> [vm\_id](#input\_vm\_id) | n/a | `number` | n/a | yes |

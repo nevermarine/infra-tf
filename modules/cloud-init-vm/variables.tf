@@ -72,3 +72,13 @@ variable "packages" {
   type    = list(string)
   default = ["tmux", "vim", "htop", "iftop", "iotop", "fastfetch"]
 }
+
+variable "passthrough_disk" {
+  type = list(object({
+    path = string
+    size = number
+    }
+  ))
+  description = "Path(s) to block device for disk passthrough"
+  default     = []
+}

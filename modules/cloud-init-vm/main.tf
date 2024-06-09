@@ -43,6 +43,18 @@ resource "proxmox_virtual_environment_vm" "vm" {
 
   }
 
+  dynamic "disk" {
+    for_each = var.passthrough_disk
+    content {
+      datastore_id      = ""
+      interface         = "sata${index(var.passthrough_disk, disk.value)}"
+      path_in_datastore = disk.value.path
+      size              = disk.value.size
+      file_format       = "raw"
+    }
+  }
+
+  boot_order = [var.disk.interface]
 }
 
 resource "proxmox_virtual_environment_file" "cloud_config" {

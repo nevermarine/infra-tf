@@ -16,6 +16,7 @@ No providers.
 |------|--------|---------|
 | <a name="module_NAS"></a> [NAS](#module\_NAS) | ./modules/cloud-init-vm | n/a |
 | <a name="module_almalinux9"></a> [almalinux9](#module\_almalinux9) | ./modules/image | n/a |
+| <a name="module_fedora40"></a> [fedora40](#module\_fedora40) | ./modules/image | n/a |
 | <a name="module_testvm"></a> [testvm](#module\_testvm) | ./modules/cloud-init-vm | n/a |
 
 ## Resources

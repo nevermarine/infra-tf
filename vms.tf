@@ -41,7 +41,7 @@ module "NAS" {
     gw      = var.vm_gw
   }
   disk = {
-    file_id      = module.almalinux9.image_id
+    file_id      = module.fedora40.image_id
     datastore_id = "local-lvm"
   }
   passthrough_disk = [
@@ -53,5 +53,9 @@ module "NAS" {
       path = "/dev/sdb"
       size = 3726
     }
+  ]
+  extra_commands = [
+    "echo -e '[Resolve]\\nDNS=8.8.8.8' > /etc/systemd/resolved.conf",
+    "systemctl restart systemd-resolved"
   ]
 }

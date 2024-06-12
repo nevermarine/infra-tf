@@ -82,3 +82,9 @@ variable "passthrough_disk" {
   description = "Path(s) to block device for disk passthrough"
   default     = []
 }
+
+variable "extra_commands" {
+  type        = list(string)
+  default     = []
+  description = "Extra commands for cloud-init"
+}

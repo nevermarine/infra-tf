@@ -31,6 +31,7 @@ No modules.
 | <a name="input_cpu_type"></a> [cpu\_type](#input\_cpu\_type) | n/a | `string` | `"x86-64-v2-AES"` | no |
 | <a name="input_default_user"></a> [default\_user](#input\_default\_user) | n/a | <pre>object(<br>    {<br>      name = string<br>      # pass    = string<br>      ssh_key = string<br>    }<br>  )</pre> | n/a | yes |
 | <a name="input_disk"></a> [disk](#input\_disk) | n/a | <pre>object(<br>    {<br>      datastore_id    = optional(string, "local-lvm")<br>      ci_datastore_id = optional(string, "local")<br>      interface       = optional(string, "scsi0")<br>      file_id         = string<br>    }<br>  )</pre> | n/a | yes |
+| <a name="input_extra_commands"></a> [extra\_commands](#input\_extra\_commands) | Extra commands for cloud-init | `list(string)` | `[]` | no |
 | <a name="input_name"></a> [name](#input\_name) | n/a | `string` | n/a | yes |
 | <a name="input_net"></a> [net](#input\_net) | n/a | <pre>object(<br>    {<br>      addr = optional(string, "dhcp")<br>      gw   = optional(string)<br><br>      bridge  = optional(string, "vmbr1")<br>      vlan_id = optional(number)<br>    }<br>  )</pre> | n/a | yes |
 | <a name="input_node_name"></a> [node\_name](#input\_node\_name) | n/a | `string` | n/a | yes |

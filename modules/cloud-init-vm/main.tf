@@ -76,7 +76,7 @@ resource "proxmox_virtual_environment_file" "cloud_config" {
         shell: /bin/bash
         sudo: ALL=(ALL) NOPASSWD:ALL
     runcmd:
-        - sed -i 's/^SELINUX=.*$/SELINUX=disabled/' /etc/selinux/config
+    ${length(local.formatted_commands) > 0 ? "${join("\n", local.formatted_commands)}\n" : ""}    - sed -i 's/^SELINUX=.*$/SELINUX=disabled/' /etc/selinux/config
         - setenforce 0
         - yum update  -y
         - yum install -y epel-release

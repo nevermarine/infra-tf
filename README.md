@@ -8,26 +8,25 @@
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 0.54.0 |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_NAS"></a> [NAS](#module\_NAS) | ./modules/cloud-init-vm | n/a |
-| <a name="module_almalinux9"></a> [almalinux9](#module\_almalinux9) | ./modules/image | n/a |
-| <a name="module_fedora40"></a> [fedora40](#module\_fedora40) | ./modules/image | n/a |
-| <a name="module_testvm"></a> [testvm](#module\_testvm) | ./modules/cloud-init-vm | n/a |
+No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [proxmox_virtual_environment_file.lb](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_file) | resource |
+| [proxmox_virtual_environment_vm.lb](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_vm) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_nas_addr"></a> [nas\_addr](#input\_nas\_addr) | n/a | `string` | n/a | yes |
 | <a name="input_password"></a> [password](#input\_password) | Proxmox Web UI password | `string` | n/a | yes |
 | <a name="input_proxmox_endpoint"></a> [proxmox\_endpoint](#input\_proxmox\_endpoint) | Endpoint to Proxmox Web UI | `string` | n/a | yes |
 | <a name="input_ssh_key"></a> [ssh\_key](#input\_ssh\_key) | Path to SSH private key for Proxmox node | `string` | n/a | yes |

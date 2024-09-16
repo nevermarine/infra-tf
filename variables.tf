@@ -12,3 +12,7 @@ variable "target_node" {
 variable "vm_gw" {
   type = string
 }
+
+variable "k8s_gw" {
+  type = string
+}

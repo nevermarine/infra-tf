@@ -12,7 +12,7 @@ resource "proxmox_virtual_environment_vm" "ran" {
   vm_id     = local.gpu_host_vm_id
   machine   = "q35" # magic value for PCIe passthrough
   cpu {
-    type    = "x86-64-v2-AES"
+    type    = "x86-64-v3"
     cores   = local.gpu_host_cpu
     sockets = 1
   }

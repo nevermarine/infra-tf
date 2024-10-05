@@ -5,6 +5,10 @@ terraform {
       source  = "bpg/proxmox"
       version = "0.54.0"
     }
+    mikrotik = {
+      source  = "ddelnano/mikrotik"
+      version = "0.16.1"
+    }
   }
   backend "s3" {
     endpoints = {
@@ -34,4 +38,13 @@ provider "proxmox" {
     agent       = true
     private_key = file(var.ssh_key)
   }
+}
+
+provider "mikrotik" {
+  host           = var.mikrotik_host
+  username       = var.mikrotik_username
+  password       = var.mikrotik_password
+  ca_certificate = var.mikrotik_cert
+  tls            = true
+  insecure       = false
 }

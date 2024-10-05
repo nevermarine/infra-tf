@@ -4,12 +4,14 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.8.0 |
+| <a name="requirement_mikrotik"></a> [mikrotik](#requirement\_mikrotik) | 0.16.1 |
 | <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 0.54.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
+| <a name="provider_mikrotik"></a> [mikrotik](#provider\_mikrotik) | 0.16.1 |
 | <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 0.54.0 |
 
 ## Modules
@@ -20,13 +22,16 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [mikrotik_dns_record.sekibanki](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [proxmox_virtual_environment_file.lb](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_file) | resource |
 | [proxmox_virtual_environment_file.master](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_file) | resource |
 | [proxmox_virtual_environment_file.ran](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_file) | resource |
+| [proxmox_virtual_environment_file.sekibanki](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_file) | resource |
 | [proxmox_virtual_environment_file.worker](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_file) | resource |
 | [proxmox_virtual_environment_vm.lb](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_vm) | resource |
 | [proxmox_virtual_environment_vm.master](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_vm) | resource |
 | [proxmox_virtual_environment_vm.ran](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_vm) | resource |
+| [proxmox_virtual_environment_vm.sekibanki](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_vm) | resource |
 | [proxmox_virtual_environment_vm.worker](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_vm) | resource |
 
 ## Inputs
@@ -35,6 +40,10 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_k8s_gw"></a> [k8s\_gw](#input\_k8s\_gw) | n/a | `string` | n/a | yes |
 | <a name="input_k8s_vlan_id"></a> [k8s\_vlan\_id](#input\_k8s\_vlan\_id) | VLAN ID for Kubernetes subnet | `number` | n/a | yes |
+| <a name="input_mikrotik_cert"></a> [mikrotik\_cert](#input\_mikrotik\_cert) | Path to Mikrotik certificate | `string` | n/a | yes |
+| <a name="input_mikrotik_host"></a> [mikrotik\_host](#input\_mikrotik\_host) | mikrotik | `string` | n/a | yes |
+| <a name="input_mikrotik_password"></a> [mikrotik\_password](#input\_mikrotik\_password) | n/a | `string` | n/a | yes |
+| <a name="input_mikrotik_username"></a> [mikrotik\_username](#input\_mikrotik\_username) | n/a | `string` | n/a | yes |
 | <a name="input_password"></a> [password](#input\_password) | Proxmox Web UI password | `string` | n/a | yes |
 | <a name="input_proxmox_endpoint"></a> [proxmox\_endpoint](#input\_proxmox\_endpoint) | Endpoint to Proxmox Web UI | `string` | n/a | yes |
 | <a name="input_ssh_key"></a> [ssh\_key](#input\_ssh\_key) | Path to SSH private key for Proxmox node | `string` | n/a | yes |
@@ -43,6 +52,7 @@ No modules.
 | <a name="input_target_node"></a> [target\_node](#input\_target\_node) | n/a | `string` | n/a | yes |
 | <a name="input_username"></a> [username](#input\_username) | Proxmox Web UI username | `string` | n/a | yes |
 | <a name="input_vm_gw"></a> [vm\_gw](#input\_vm\_gw) | n/a | `string` | n/a | yes |
+| <a name="input_vm_subnet"></a> [vm\_subnet](#input\_vm\_subnet) | VM CIDR subnet. Needed only for DNS records | `string` | n/a | yes |
 | <a name="input_vm_username"></a> [vm\_username](#input\_vm\_username) | Username for user in VM modules | `string` | n/a | yes |
 | <a name="input_vm_vlan_id"></a> [vm\_vlan\_id](#input\_vm\_vlan\_id) | VLAN ID for VM subnet | `number` | n/a | yes |
 

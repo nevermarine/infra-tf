@@ -8,3 +8,11 @@ provider "registry.terraform.io/bpg/proxmox" {
     "h1:8BezUjbYmUiTyM7bGVMXPPj0g+hQzzGmFHh1oh2jvnI=",
   ]
 }
+
+provider "registry.terraform.io/ddelnano/mikrotik" {
+  version     = "0.16.1"
+  constraints = "0.16.1"
+  hashes = [
+    "h1:kNjc3X3+gfuLE1C6q2P9vPGqr8CrBIosNaGIYneCGMc=",
+  ]
+}

@@ -8,7 +8,10 @@ variable "target_node" {
 # variable "dns_addr" {
 #   type = string
 # }
-
+variable "vm_subnet" {
+  type        = string
+  description = "VM CIDR subnet. Needed only for DNS records"
+}
 variable "vm_gw" {
   type = string
 }

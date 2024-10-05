@@ -18,7 +18,7 @@ resource "proxmox_virtual_environment_vm" "lb" {
   }
 
   agent {
-    enabled = false
+    enabled = true
   }
 
   memory {

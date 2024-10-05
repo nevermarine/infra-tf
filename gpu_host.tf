@@ -18,7 +18,7 @@ resource "proxmox_virtual_environment_vm" "ran" {
   }
 
   agent {
-    enabled = false
+    enabled = true
   }
 
   memory {

@@ -12,9 +12,10 @@ resource "proxmox_virtual_environment_vm" "sanae" {
   node_name = var.target_node
   vm_id     = local.mon_vm_id
   cpu {
-    type    = "x86-64-v3"
-    cores   = local.mon_cpu
-    sockets = 1
+    architecture = "x86_64"
+    type         = "x86-64-v3"
+    cores        = local.mon_cpu
+    sockets      = 1
   }
 
   agent {

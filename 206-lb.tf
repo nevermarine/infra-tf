@@ -16,9 +16,10 @@ resource "proxmox_virtual_environment_vm" "lb" {
   vm_id     = local.vm_id
 
   cpu {
-    type    = "x86-64-v2-AES"
-    cores   = local.cpu
-    sockets = 1
+    architecture = "x86_64"
+    type         = "x86-64-v2-AES"
+    cores        = local.cpu
+    sockets      = 1
   }
 
   agent {

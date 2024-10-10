@@ -5,14 +5,14 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.8.0 |
 | <a name="requirement_mikrotik"></a> [mikrotik](#requirement\_mikrotik) | 0.16.1 |
-| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 0.54.0 |
+| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 0.66.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_mikrotik"></a> [mikrotik](#provider\_mikrotik) | 0.16.1 |
-| <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 0.54.0 |
+| <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 0.66.1 |
 
 ## Modules
 
@@ -26,16 +26,16 @@ No modules.
 | [mikrotik_dns_record.nas](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.patchy](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.sanae](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
-| [proxmox_virtual_environment_file.lb](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_file) | resource |
-| [proxmox_virtual_environment_file.master](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_file) | resource |
-| [proxmox_virtual_environment_file.ran](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_file) | resource |
-| [proxmox_virtual_environment_file.sanae](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_file) | resource |
-| [proxmox_virtual_environment_file.worker](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_file) | resource |
-| [proxmox_virtual_environment_vm.lb](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_vm) | resource |
-| [proxmox_virtual_environment_vm.master](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_vm) | resource |
-| [proxmox_virtual_environment_vm.ran](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_vm) | resource |
-| [proxmox_virtual_environment_vm.sanae](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_vm) | resource |
-| [proxmox_virtual_environment_vm.worker](https://registry.terraform.io/providers/bpg/proxmox/0.54.0/docs/resources/virtual_environment_vm) | resource |
+| [proxmox_virtual_environment_file.lb](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
+| [proxmox_virtual_environment_file.master](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
+| [proxmox_virtual_environment_file.ran](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
+| [proxmox_virtual_environment_file.sanae](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
+| [proxmox_virtual_environment_file.worker](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
+| [proxmox_virtual_environment_vm.lb](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
+| [proxmox_virtual_environment_vm.master](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
+| [proxmox_virtual_environment_vm.ran](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
+| [proxmox_virtual_environment_vm.sanae](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
+| [proxmox_virtual_environment_vm.worker](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
 
 ## Inputs
 

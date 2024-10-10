@@ -21,9 +21,10 @@ resource "proxmox_virtual_environment_vm" "master" {
   vm_id     = local.k8s_start_id + count.index
 
   cpu {
-    type    = "x86-64-v2-AES"
-    cores   = local.master_cpu
-    sockets = 1
+    architecture = "x86_64"
+    type         = "x86-64-v2-AES"
+    cores        = local.master_cpu
+    sockets      = 1
   }
 
   agent {
@@ -104,9 +105,10 @@ resource "proxmox_virtual_environment_vm" "worker" {
   vm_id     = local.k8s_start_id + local.master_count + count.index
 
   cpu {
-    type    = "x86-64-v2-AES"
-    cores   = local.worker_cpu
-    sockets = 1
+    architecture = "x86_64"
+    type         = "x86-64-v2-AES"
+    cores        = local.worker_cpu
+    sockets      = 1
   }
 
   agent {

@@ -1,5 +1,5 @@
 locals {
-  name  = "lb"
+  name  = "aya"
   vm_id = 206
   cpu   = 2
   ram   = 2048
@@ -7,6 +7,10 @@ locals {
   addr  = "10.0.0.4/24"
 }
 resource "proxmox_virtual_environment_vm" "lb" {
+  lifecycle {
+    prevent_destroy = true
+    ignore_changes  = [name]
+  }
   name      = local.name
   node_name = var.target_node
   vm_id     = local.vm_id
@@ -53,6 +57,10 @@ resource "proxmox_virtual_environment_vm" "lb" {
 }
 
 resource "proxmox_virtual_environment_file" "lb" {
+  lifecycle {
+    prevent_destroy = true
+    ignore_changes  = [source_raw]
+  }
   content_type = "snippets"
   datastore_id = "local"
   node_name    = var.target_node
@@ -86,4 +94,9 @@ resource "proxmox_virtual_environment_file" "lb" {
 
     file_name = "cloud-config-${local.name}-${local.vm_id}.yaml"
   }
+}
+
+resource "mikrotik_dns_record" "lb" {
+  name    = "${local.name}.home"
+  address = "10.0.0.4"
 }

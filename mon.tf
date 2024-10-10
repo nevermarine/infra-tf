@@ -1,19 +1,19 @@
 locals {
-  vpn_name    = "sekibanki"
-  vpn_vm_id   = 211
-  vpn_cpu     = 1
-  vpn_ram     = 2048
-  vpn_disk    = 20
-  vpn_addr    = "10.0.0.25/24"
-  vpn_hostnum = 25
+  mon_name    = "sanae"
+  mon_vm_id   = 211
+  mon_cpu     = 4
+  mon_ram     = 2048
+  mon_disk    = 100
+  mon_addr    = "10.0.0.25/24"
+  mon_hostnum = 25
 }
-resource "proxmox_virtual_environment_vm" "sekibanki" {
-  name      = local.vpn_name
+resource "proxmox_virtual_environment_vm" "sanae" {
+  name      = local.mon_name
   node_name = var.target_node
-  vm_id     = local.vpn_vm_id
+  vm_id     = local.mon_vm_id
   cpu {
     type    = "x86-64-v3"
-    cores   = local.vpn_cpu
+    cores   = local.mon_cpu
     sockets = 1
   }
 
@@ -22,7 +22,7 @@ resource "proxmox_virtual_environment_vm" "sekibanki" {
   }
 
   memory {
-    dedicated = local.vpn_ram
+    dedicated = local.mon_ram
   }
 
   network_device {
@@ -36,15 +36,15 @@ resource "proxmox_virtual_environment_vm" "sekibanki" {
   initialization {
     ip_config {
       ipv4 {
-        address = local.vpn_addr
+        address = local.mon_addr
         gateway = var.vm_gw
       }
     }
-    user_data_file_id = proxmox_virtual_environment_file.sekibanki.id
+    user_data_file_id = proxmox_virtual_environment_file.sanae.id
   }
 
   disk {
-    size         = local.vpn_disk
+    size         = local.mon_disk
     file_id      = "local:iso/Rocky-9-GenericCloud-LVM-9.4-20240609.0.x86_64.qcow2.iso"
     datastore_id = "local-lvm"
     interface    = "scsi0"
@@ -52,7 +52,7 @@ resource "proxmox_virtual_environment_vm" "sekibanki" {
   boot_order = ["scsi0"]
 }
 
-resource "proxmox_virtual_environment_file" "sekibanki" {
+resource "proxmox_virtual_environment_file" "sanae" {
   content_type = "snippets"
   datastore_id = "local"
   node_name    = var.target_node
@@ -60,8 +60,8 @@ resource "proxmox_virtual_environment_file" "sekibanki" {
   source_raw {
     data = <<-EOF
     #cloud-config
-    hostname: ${local.vpn_name}
-    fqdn: ${local.vpn_name}.home
+    hostname: ${local.mon_name}
+    fqdn: ${local.mon_name}.home
     users:
       - name: ${var.vm_username}
         ssh_authorized_keys:
@@ -84,11 +84,11 @@ resource "proxmox_virtual_environment_file" "sekibanki" {
     timezone: Europe/Moscow
     EOF
 
-    file_name = "cloud-config-${local.vpn_name}-${local.vpn_vm_id}.yaml"
+    file_name = "cloud-config-${local.mon_name}-${local.mon_vm_id}.yaml"
   }
 }
 
-resource "mikrotik_dns_record" "sekibanki" {
-  name    = "${local.vpn_name}.home"
-  address = cidrhost(var.vm_subnet, local.vpn_hostnum)
+resource "mikrotik_dns_record" "sanae" {
+  name    = "${local.mon_name}.home"
+  address = cidrhost(var.vm_subnet, local.mon_hostnum)
 }

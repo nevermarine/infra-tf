@@ -42,7 +42,6 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_k8s_gw"></a> [k8s\_gw](#input\_k8s\_gw) | n/a | `string` | n/a | yes |
-| <a name="input_k8s_vlan_id"></a> [k8s\_vlan\_id](#input\_k8s\_vlan\_id) | VLAN ID for Kubernetes subnet | `number` | n/a | yes |
 | <a name="input_mikrotik_cert"></a> [mikrotik\_cert](#input\_mikrotik\_cert) | Path to Mikrotik certificate | `string` | n/a | yes |
 | <a name="input_mikrotik_host"></a> [mikrotik\_host](#input\_mikrotik\_host) | mikrotik | `string` | n/a | yes |
 | <a name="input_mikrotik_password"></a> [mikrotik\_password](#input\_mikrotik\_password) | n/a | `string` | n/a | yes |
@@ -57,7 +56,6 @@ No modules.
 | <a name="input_vm_gw"></a> [vm\_gw](#input\_vm\_gw) | n/a | `string` | n/a | yes |
 | <a name="input_vm_subnet"></a> [vm\_subnet](#input\_vm\_subnet) | VM CIDR subnet. Needed only for DNS records | `string` | n/a | yes |
 | <a name="input_vm_username"></a> [vm\_username](#input\_vm\_username) | Username for user in VM modules | `string` | n/a | yes |
-| <a name="input_vm_vlan_id"></a> [vm\_vlan\_id](#input\_vm\_vlan\_id) | VLAN ID for VM subnet | `number` | n/a | yes |
 
 ## Outputs
 

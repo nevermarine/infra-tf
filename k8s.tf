@@ -36,8 +36,8 @@ resource "proxmox_virtual_environment_vm" "master" {
   }
 
   network_device {
-    bridge  = "vmbr1"
-    vlan_id = var.k8s_vlan_id
+    bridge = "k8s"
+    # vlan_id = var.k8s_vlan_id
   }
   operating_system {
     type = "l26"
@@ -120,8 +120,8 @@ resource "proxmox_virtual_environment_vm" "worker" {
   }
 
   network_device {
-    bridge  = "vmbr1"
-    vlan_id = var.k8s_vlan_id
+    bridge = "k8s"
+    # vlan_id = var.k8s_vlan_id
   }
   operating_system {
     type = "l26"

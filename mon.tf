@@ -27,8 +27,8 @@ resource "proxmox_virtual_environment_vm" "sanae" {
   }
 
   network_device {
-    bridge  = "vmbr1"
-    vlan_id = var.vm_vlan_id
+    bridge = "VM"
+    # vlan_id = var.vm_vlan_id
   }
   operating_system {
     type = "l26"

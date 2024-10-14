@@ -15,6 +15,8 @@ locals {
 }
 
 resource "proxmox_virtual_environment_vm" "master" {
+  on_boot   = false
+  started   = false
   count     = local.master_count
   name      = "${local.master_name}${count.index + 1}"
   node_name = var.target_node
@@ -99,6 +101,8 @@ resource "proxmox_virtual_environment_file" "master" {
 }
 
 resource "proxmox_virtual_environment_vm" "worker" {
+  on_boot   = false
+  started   = false
   count     = local.worker_count
   name      = "${local.worker_name}${count.index + 1}"
   node_name = var.target_node

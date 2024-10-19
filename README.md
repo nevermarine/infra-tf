@@ -26,6 +26,8 @@ No modules.
 | [mikrotik_dns_record.nas](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.patchy](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.sanae](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
+| [mikrotik_dns_record.talos_master](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
+| [mikrotik_dns_record.talos_worker](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [proxmox_virtual_environment_file.lb](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
 | [proxmox_virtual_environment_file.master](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
 | [proxmox_virtual_environment_file.ran](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
@@ -35,12 +37,15 @@ No modules.
 | [proxmox_virtual_environment_vm.master](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
 | [proxmox_virtual_environment_vm.ran](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
 | [proxmox_virtual_environment_vm.sanae](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
+| [proxmox_virtual_environment_vm.talos_master](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
+| [proxmox_virtual_environment_vm.talos_worker](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
 | [proxmox_virtual_environment_vm.worker](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_dns_search_domain"></a> [dns\_search\_domain](#input\_dns\_search\_domain) | n/a | `string` | n/a | yes |
 | <a name="input_k8s_gw"></a> [k8s\_gw](#input\_k8s\_gw) | n/a | `string` | n/a | yes |
 | <a name="input_mikrotik_cert"></a> [mikrotik\_cert](#input\_mikrotik\_cert) | Path to Mikrotik certificate | `string` | n/a | yes |
 | <a name="input_mikrotik_host"></a> [mikrotik\_host](#input\_mikrotik\_host) | mikrotik | `string` | n/a | yes |

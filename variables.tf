@@ -19,3 +19,7 @@ variable "vm_gw" {
 variable "k8s_gw" {
   type = string
 }
+
+variable "dns_search_domain" {
+  type = string
+}

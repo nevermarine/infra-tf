@@ -23,7 +23,7 @@ resource "proxmox_virtual_environment_vm" "talos_master" {
 
   cpu {
     architecture = "x86_64"
-    type         = "x86-64-v2-AES"
+    type         = "x86-64-v3"
     cores        = local.talos_master_cpu
     sockets      = 1
   }
@@ -58,13 +58,20 @@ resource "proxmox_virtual_environment_vm" "talos_master" {
     # user_data_file_id = proxmox_virtual_environment_file.talos_master[count.index].id
   }
 
+  cdrom {
+    enabled   = true
+    file_id   = local.talos_image
+    interface = "ide0"
+  }
+
   disk {
-    size         = local.talos_master_disk
-    file_id      = local.talos_image
+    size        = local.talos_master_disk
+    file_format = "raw"
+    # file_id      = local.talos_image
     datastore_id = "local-lvm"
     interface    = "scsi0"
   }
-  boot_order = ["scsi0"]
+  # boot_order = ["scsi0"]
 }
 
 resource "mikrotik_dns_record" "talos_master" {
@@ -116,13 +123,19 @@ resource "proxmox_virtual_environment_vm" "talos_worker" {
     # user_data_file_id = proxmox_virtual_environment_file.talos_worker[count.index].id
   }
 
+  cdrom {
+    enabled   = true
+    file_id   = local.talos_image
+    interface = "ide0"
+  }
+
   disk {
     size         = local.talos_worker_disk
-    file_id      = local.talos_image
+    file_format  = "raw"
     datastore_id = "local-lvm"
     interface    = "scsi0"
   }
-  boot_order = ["scsi0"]
+  # boot_order = ["scsi0"]
 }
 
 resource "mikrotik_dns_record" "talos_worker" {

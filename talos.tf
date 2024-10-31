@@ -13,6 +13,8 @@ locals {
   talos_k8s_initial_cidr  = "10.0.0.0/24"
   talos_k8s_subnet_offset = 31
   talos_image             = "local:iso/nocloud-amd64.iso"
+  talos_master_tags       = ["talos", "talos-master"]
+  talos_worker_tags       = ["talos", "talos-worker"]
 }
 
 resource "proxmox_virtual_environment_vm" "talos_master" {
@@ -20,6 +22,7 @@ resource "proxmox_virtual_environment_vm" "talos_master" {
   name      = "${local.talos_master_name}${count.index + 1}"
   node_name = var.target_node
   vm_id     = local.talos_k8s_start_id + count.index
+  tags      = local.talos_master_tags
 
   cpu {
     architecture = "x86_64"
@@ -85,6 +88,7 @@ resource "proxmox_virtual_environment_vm" "talos_worker" {
   name      = "${local.talos_worker_name}${count.index + 1}"
   node_name = var.target_node
   vm_id     = local.talos_k8s_start_id + local.talos_master_count + count.index
+  tags      = local.talos_worker_tags
 
   cpu {
     architecture = "x86_64"

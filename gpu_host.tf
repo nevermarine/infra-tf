@@ -50,6 +50,12 @@ resource "proxmox_virtual_environment_vm" "ran" {
     datastore_id = "local-lvm"
     interface    = "scsi0"
   }
+  disk {
+    size         = 300
+    file_format  = "raw"
+    datastore_id = "local-lvm"
+    interface    = "scsi1"
+  }
   boot_order = ["scsi0"]
   hostpci {
     device = "hostpci0"

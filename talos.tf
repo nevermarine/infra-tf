@@ -4,7 +4,8 @@ locals {
   talos_k8s_start_id      = 251
   talos_worker_cpu        = 4
   talos_worker_ram        = 4096
-  talos_worker_disk       = 30
+  talos_worker_main_disk  = 20
+  talos_worker_data_disk  = 30
   talos_worker_count      = 3
   talos_master_cpu        = 2
   talos_master_ram        = 4096
@@ -134,10 +135,17 @@ resource "proxmox_virtual_environment_vm" "talos_worker" {
   }
 
   disk {
-    size         = local.talos_worker_disk
+    size         = local.talos_worker_main_disk
     file_format  = "raw"
     datastore_id = "local-lvm"
     interface    = "scsi0"
+  }
+
+  disk {
+    size         = local.talos_worker_data_disk
+    file_format  = "raw"
+    datastore_id = "local-lvm"
+    interface    = "scsi1"
   }
   # boot_order = ["scsi0"]
 }

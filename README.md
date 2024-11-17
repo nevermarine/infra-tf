@@ -6,6 +6,7 @@
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.8.0 |
 | <a name="requirement_mikrotik"></a> [mikrotik](#requirement\_mikrotik) | 0.16.1 |
 | <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 0.66.1 |
+| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.7.0-alpha.0 |
 
 ## Providers
 
@@ -13,6 +14,7 @@
 |------|---------|
 | <a name="provider_mikrotik"></a> [mikrotik](#provider\_mikrotik) | 0.16.1 |
 | <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 0.66.1 |
+| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.7.0-alpha.0 |
 
 ## Modules
 
@@ -40,6 +42,15 @@ No modules.
 | [proxmox_virtual_environment_vm.talos_master](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
 | [proxmox_virtual_environment_vm.talos_worker](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
 | [proxmox_virtual_environment_vm.worker](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
+| [talos_cluster_kubeconfig.kubeconfig](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/cluster_kubeconfig) | resource |
+| [talos_machine_bootstrap.bootstrap](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/machine_bootstrap) | resource |
+| [talos_machine_configuration_apply.machineconfig_master_apply](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/machine_configuration_apply) | resource |
+| [talos_machine_configuration_apply.machineconfig_worker_apply](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/machine_configuration_apply) | resource |
+| [talos_machine_secrets.machine_secrets](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/machine_secrets) | resource |
+| [talos_client_configuration.talosconfig](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/client_configuration) | data source |
+| [talos_cluster_health.health](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/cluster_health) | data source |
+| [talos_machine_configuration.machineconfig_master](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/machine_configuration) | data source |
+| [talos_machine_configuration.machineconfig_worker](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/machine_configuration) | data source |
 
 ## Inputs
 
@@ -64,5 +75,8 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_kubeconfig"></a> [kubeconfig](#output\_kubeconfig) | n/a |
+| <a name="output_talosconfig"></a> [talosconfig](#output\_talosconfig) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

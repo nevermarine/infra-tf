@@ -9,6 +9,10 @@ terraform {
       source  = "ddelnano/mikrotik"
       version = "0.16.1"
     }
+    talos = {
+      source  = "siderolabs/talos"
+      version = "0.7.0-alpha.0"
+    }
   }
   backend "s3" {
     endpoints = {

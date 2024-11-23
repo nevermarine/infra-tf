@@ -3,6 +3,13 @@ locals {
   talos_bootstrap_node = "10.0.0.31"
   talos_cluster_name   = "pxmx-talos"
 }
+
+data "talos_image_factory_urls" "image" {
+  talos_version = "v1.8.2"
+  schematic_id  = "6adc7e7fba27948460e2231e5272e88b85159da3f3db980551976bf9898ff64b"
+  platform      = "nocloud"
+}
+
 resource "talos_machine_secrets" "machine_secrets" {}
 
 data "talos_client_configuration" "talosconfig" {
@@ -30,6 +37,18 @@ resource "talos_machine_configuration_apply" "machineconfig_master_apply" {
   config_patches = [
     yamlencode({
       machine = {
+        install = {
+          disk  = "/dev/sda"
+          image = data.talos_image_factory_urls.image.urls.installer
+        }
+        time = {
+          servers = [
+            "0.ru.pool.ntp.org",
+            "1.ru.pool.ntp.org",
+            "2.ru.pool.ntp.org",
+            "3.ru.pool.ntp.org",
+          ]
+        }
         network = {
           interfaces = [
             {
@@ -59,6 +78,24 @@ resource "talos_machine_configuration_apply" "machineconfig_worker_apply" {
   client_configuration        = talos_machine_secrets.machine_secrets.client_configuration
   machine_configuration_input = data.talos_machine_configuration.machineconfig_worker.machine_configuration
   node                        = mikrotik_dns_record.talos_worker[count.index].address
+  config_patches = [
+    yamlencode({
+      machine = {
+        install = {
+          disk  = "/dev/sda"
+          image = data.talos_image_factory_urls.image.urls.installer
+        }
+        time = {
+          servers = [
+            "0.ru.pool.ntp.org",
+            "1.ru.pool.ntp.org",
+            "2.ru.pool.ntp.org",
+            "3.ru.pool.ntp.org",
+          ]
+        }
+      }
+    })
+  ]
 }
 
 resource "talos_machine_bootstrap" "bootstrap" {
@@ -74,12 +111,6 @@ data "talos_cluster_health" "health" {
   worker_nodes         = [for i in mikrotik_dns_record.talos_worker : i.address]
   endpoints            = data.talos_client_configuration.talosconfig.endpoints
 }
-
-# data "talos_cluster_kubeconfig" "kubeconfig" {
-#   depends_on           = [ talos_machine_bootstrap.bootstrap, data.talos_cluster_health.health ]
-#   client_configuration = talos_machine_secrets.machine_secrets.client_configuration
-#   node                 = local.talos_cluster_vip
-# }
 
 resource "talos_cluster_kubeconfig" "kubeconfig" {
   depends_on           = [talos_machine_bootstrap.bootstrap, data.talos_cluster_health.health]

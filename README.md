@@ -49,6 +49,7 @@ No modules.
 | [talos_machine_secrets.machine_secrets](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/machine_secrets) | resource |
 | [talos_client_configuration.talosconfig](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/client_configuration) | data source |
 | [talos_cluster_health.health](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/cluster_health) | data source |
+| [talos_image_factory_urls.image](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/image_factory_urls) | data source |
 | [talos_machine_configuration.machineconfig_master](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/machine_configuration) | data source |
 | [talos_machine_configuration.machineconfig_worker](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/machine_configuration) | data source |
 

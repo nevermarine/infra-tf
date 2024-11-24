@@ -30,6 +30,7 @@ No modules.
 | [mikrotik_dns_record.sanae](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.talos_master](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.talos_worker](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
+| [proxmox_virtual_environment_download_file.rocky_lvm](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_download_file) | resource |
 | [proxmox_virtual_environment_download_file.talos_image](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_download_file) | resource |
 | [proxmox_virtual_environment_file.lb](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
 | [proxmox_virtual_environment_file.master](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |

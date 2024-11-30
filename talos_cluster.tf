@@ -5,7 +5,7 @@ locals {
 }
 
 data "talos_image_factory_urls" "image" {
-  talos_version = "v1.8.2"
+  talos_version = "v1.8.3"
   schematic_id  = "6adc7e7fba27948460e2231e5272e88b85159da3f3db980551976bf9898ff64b"
   platform      = "nocloud"
 }
@@ -29,7 +29,9 @@ data "talos_machine_configuration" "machineconfig_master" {
 
 resource "talos_machine_configuration_apply" "machineconfig_master_apply" {
   count = local.talos_master_count
-  #   depends_on                  = [ proxmox_virtual_environment_vm.talos_master[count.index] ]
+  # lifecycle {
+  #   replace_triggered_by = [proxmox_virtual_environment_vm.talos_master[count.index]]
+  # }
   depends_on                  = [proxmox_virtual_environment_vm.talos_master]
   client_configuration        = talos_machine_secrets.machine_secrets.client_configuration
   machine_configuration_input = data.talos_machine_configuration.machineconfig_master.machine_configuration
@@ -73,6 +75,9 @@ data "talos_machine_configuration" "machineconfig_worker" {
 
 resource "talos_machine_configuration_apply" "machineconfig_worker_apply" {
   count = local.talos_worker_count
+  # lifecycle {
+  #   replace_triggered_by = [proxmox_virtual_environment_vm.talos_worker[count.index]]
+  # }
   #   depends_on                  = [ proxmox_virtual_environment_vm.talos_worker[count.index] ]
   depends_on                  = [proxmox_virtual_environment_vm.talos_worker]
   client_configuration        = talos_machine_secrets.machine_secrets.client_configuration

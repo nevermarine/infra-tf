@@ -5,6 +5,7 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.8.0 |
 | <a name="requirement_mikrotik"></a> [mikrotik](#requirement\_mikrotik) | 0.16.1 |
+| <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.3 |
 | <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 0.66.1 |
 | <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.7.0-alpha.0 |
 
@@ -13,6 +14,7 @@
 | Name | Version |
 |------|---------|
 | <a name="provider_mikrotik"></a> [mikrotik](#provider\_mikrotik) | 0.16.1 |
+| <a name="provider_null"></a> [null](#provider\_null) | 3.2.3 |
 | <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 0.66.1 |
 | <a name="provider_talos"></a> [talos](#provider\_talos) | 0.7.0-alpha.0 |
 
@@ -30,6 +32,8 @@ No modules.
 | [mikrotik_dns_record.sanae](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.talos_master](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.talos_worker](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
+| [null_resource.talos_master_trigger](https://registry.terraform.io/providers/hashicorp/null/3.2.3/docs/resources/resource) | resource |
+| [null_resource.talos_worker_trigger](https://registry.terraform.io/providers/hashicorp/null/3.2.3/docs/resources/resource) | resource |
 | [proxmox_virtual_environment_download_file.rocky_lvm](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_download_file) | resource |
 | [proxmox_virtual_environment_download_file.talos_image](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_download_file) | resource |
 | [proxmox_virtual_environment_file.lb](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |

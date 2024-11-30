@@ -13,9 +13,17 @@ locals {
   talos_master_count      = 3
   talos_k8s_initial_cidr  = "10.0.0.0/24"
   talos_k8s_subnet_offset = 31
-  talos_image             = "local:iso/nocloud-amd64.iso"
-  talos_master_tags       = ["talos", "talos-master"]
-  talos_worker_tags       = ["talos", "talos-worker"]
+  # talos_image             = "local:iso/nocloud-amd64.iso"
+  talos_image       = proxmox_virtual_environment_download_file.talos_image.id
+  talos_master_tags = ["talos", "talos-master"]
+  talos_worker_tags = ["talos", "talos-worker"]
+}
+
+resource "null_resource" "talos_master_trigger" {
+  count = local.talos_master_count
+  triggers = {
+    talos_image = proxmox_virtual_environment_vm.talos_master[count.index].cdrom[0].file_id
+  }
 }
 
 resource "proxmox_virtual_environment_vm" "talos_master" {
@@ -82,6 +90,13 @@ resource "mikrotik_dns_record" "talos_master" {
   count   = local.talos_master_count
   name    = "${local.talos_master_name}${count.index + 1}.home"
   address = cidrhost(local.talos_k8s_initial_cidr, local.talos_k8s_subnet_offset + count.index)
+}
+
+resource "null_resource" "talos_worker_trigger" {
+  count = local.talos_worker_count
+  triggers = {
+    talos_image = proxmox_virtual_environment_vm.talos_worker[count.index].cdrom[0].file_id
+  }
 }
 
 resource "proxmox_virtual_environment_vm" "talos_worker" {

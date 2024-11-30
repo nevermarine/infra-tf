@@ -17,6 +17,14 @@ provider "registry.terraform.io/ddelnano/mikrotik" {
   ]
 }
 
+provider "registry.terraform.io/hashicorp/null" {
+  version     = "3.2.3"
+  constraints = "3.2.3"
+  hashes = [
+    "h1:+AnORRgFbRO6qqcfaQyeX80W0eX3VmjadjnUFUJTiXo=",
+  ]
+}
+
 provider "registry.terraform.io/siderolabs/talos" {
   version     = "0.7.0-alpha.0"
   constraints = "0.7.0-alpha.0"

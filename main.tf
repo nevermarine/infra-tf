@@ -13,6 +13,10 @@ terraform {
       source  = "siderolabs/talos"
       version = "0.7.0-alpha.0"
     }
+    null = {
+      source  = "hashicorp/null"
+      version = "3.2.3"
+    }
   }
   backend "s3" {
     endpoints = {

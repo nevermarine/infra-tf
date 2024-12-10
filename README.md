@@ -4,6 +4,8 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.8.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.16.1 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.34.0 |
 | <a name="requirement_mikrotik"></a> [mikrotik](#requirement\_mikrotik) | 0.16.1 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.3 |
 | <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 0.66.1 |
@@ -13,6 +15,7 @@
 
 | Name | Version |
 |------|---------|
+| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.16.1 |
 | <a name="provider_mikrotik"></a> [mikrotik](#provider\_mikrotik) | 0.16.1 |
 | <a name="provider_null"></a> [null](#provider\_null) | 3.2.3 |
 | <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 0.66.1 |
@@ -26,6 +29,8 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [helm_release.argocd](https://registry.terraform.io/providers/hashicorp/helm/2.16.1/docs/resources/release) | resource |
+| [helm_release.argocd-start-app](https://registry.terraform.io/providers/hashicorp/helm/2.16.1/docs/resources/release) | resource |
 | [mikrotik_dns_record.lb](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.nas](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.patchy](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
@@ -63,6 +68,9 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_argo_repo_name"></a> [argo\_repo\_name](#input\_argo\_repo\_name) | Name for ArgoCD repo | `string` | n/a | yes |
+| <a name="input_argo_repo_url"></a> [argo\_repo\_url](#input\_argo\_repo\_url) | Repository URL for ArgoCD secret | `string` | n/a | yes |
+| <a name="input_argo_ssh_private_key"></a> [argo\_ssh\_private\_key](#input\_argo\_ssh\_private\_key) | SSH key for ArgoCD access to repo | `string` | n/a | yes |
 | <a name="input_dns_search_domain"></a> [dns\_search\_domain](#input\_dns\_search\_domain) | n/a | `string` | n/a | yes |
 | <a name="input_k8s_gw"></a> [k8s\_gw](#input\_k8s\_gw) | n/a | `string` | n/a | yes |
 | <a name="input_mikrotik_cert"></a> [mikrotik\_cert](#input\_mikrotik\_cert) | Path to Mikrotik certificate | `string` | n/a | yes |

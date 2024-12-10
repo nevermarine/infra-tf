@@ -17,6 +17,14 @@ terraform {
       source  = "hashicorp/null"
       version = "3.2.3"
     }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "2.16.1"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "2.34.0"
+    }
   }
   backend "s3" {
     endpoints = {
@@ -55,4 +63,20 @@ provider "mikrotik" {
   ca_certificate = var.mikrotik_cert
   tls            = true
   insecure       = false
+}
+
+provider "kubernetes" {
+  host                   = yamldecode(talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw).clusters[0].cluster.server
+  cluster_ca_certificate = base64decode(yamldecode(talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw).clusters[0].cluster.certificate-authority-data)
+  client_certificate     = base64decode(yamldecode(talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw).users[0].user.client-certificate-data)
+  client_key             = base64decode(yamldecode(talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw).users[0].user.client-key-data)
+}
+
+provider "helm" {
+  kubernetes {
+    host                   = yamldecode(talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw).clusters[0].cluster.server
+    cluster_ca_certificate = base64decode(yamldecode(talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw).clusters[0].cluster.certificate-authority-data)
+    client_certificate     = base64decode(yamldecode(talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw).users[0].user.client-certificate-data)
+    client_key             = base64decode(yamldecode(talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw).users[0].user.client-key-data)
+  }
 }

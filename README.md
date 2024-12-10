@@ -5,7 +5,6 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.8.0 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.16.1 |
-| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.34.0 |
 | <a name="requirement_mikrotik"></a> [mikrotik](#requirement\_mikrotik) | 0.16.1 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.3 |
 | <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 0.66.1 |

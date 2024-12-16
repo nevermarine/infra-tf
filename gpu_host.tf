@@ -1,7 +1,7 @@
 locals {
   gpu_host_name  = "ran"
   gpu_host_vm_id = 210
-  gpu_host_cpu   = 10
+  gpu_host_cpu   = 28
   gpu_host_ram   = 20480
   gpu_host_disk  = 200
   gpu_host_addr  = "10.0.0.20/24"

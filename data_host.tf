@@ -5,10 +5,22 @@ locals {
   nestor_ram   = 4096
   nestor_disk  = 30
   nestor_ip    = "10.0.0.40"
-  nestor_image = "local:iso/Rocky-9-GenericCloud-LVM-9.4-20240609.0.x86_64.qcow2.iso"
+  nestor_image = proxmox_virtual_environment_download_file.talos_data_image.id
 }
 
-resource "proxmox_virtual_environment_vm" "nestor_master" {
+resource "null_resource" "nestor_trigger" {
+  triggers = {
+    talos_data_image = proxmox_virtual_environment_vm.nestor.cdrom[0].file_id
+  }
+}
+
+data "talos_image_factory_urls" "data_image" {
+  talos_version = "v1.9.3"
+  schematic_id  = "ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515"
+  platform      = "nocloud"
+}
+
+resource "proxmox_virtual_environment_vm" "nestor" {
   name      = local.nestor_name
   node_name = var.target_node
   vm_id     = local.nestor_vm_id
@@ -47,7 +59,13 @@ resource "proxmox_virtual_environment_vm" "nestor_master" {
       servers = [var.vm_gw, "8.8.8.8"]
       domain  = var.dns_search_domain
     }
-    user_data_file_id = proxmox_virtual_environment_file.nestor.id
+    # user_data_file_id = proxmox_virtual_environment_file.nestor.id
+  }
+
+  cdrom {
+    enabled   = true
+    file_id   = local.nestor_image
+    interface = "ide0"
   }
 
   disk {
@@ -62,49 +80,35 @@ resource "proxmox_virtual_environment_vm" "nestor_master" {
     device = "hostpci0"
     id     = "0000:04:00.0"
     pcie   = true
-
   }
-  boot_order = ["scsi0"]
 }
 
-resource "proxmox_virtual_environment_file" "nestor" {
-  lifecycle {
-    prevent_destroy = true
-    ignore_changes  = [source_raw]
-  }
-  content_type = "snippets"
-  datastore_id = "local"
-  node_name    = var.target_node
-
-  source_raw {
-    data = <<-EOF
-    #cloud-config
-    hostname: ${local.nestor_name}
-    fqdn: ${local.nestor_name}.home
-    users:
-      - name: ${var.vm_username}
-        ssh_authorized_keys:
-          - ${file(var.ssh_public_key)}
-        groups:
-          - sudo
-          - docker
-        shell: /bin/bash
-        sudo: ALL=(ALL) NOPASSWD:ALL
-    package_update: true
-    package_upgrade: true
-    runcmd:
-        - setenforce 0
-        - sed -i 's/^SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
-        - dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
-        - yum install -y epel-release
-        - yum install -y tmux vim htop iftop iotop fastfetch docker-ce
-        - systemctl enable --now docker
-        - echo "done" > /tmp/cloud-config.done
-    timezone: Europe/Moscow
-    EOF
-
-    file_name = "cloud-config-${local.nestor_name}-${local.nestor_vm_id}.yaml"
-  }
+resource "talos_machine_configuration_apply" "machineconfig_nestor_appl" {
+  depends_on                  = [proxmox_virtual_environment_vm.nestor]
+  client_configuration        = talos_machine_secrets.machine_secrets.client_configuration
+  machine_configuration_input = data.talos_machine_configuration.machineconfig_worker.machine_configuration
+  node                        = local.nestor_ip
+  config_patches = [
+    yamlencode({
+      machine = {
+        install = {
+          disk  = "/dev/sda"
+          image = data.talos_image_factory_urls.data_image.urls.installer
+        }
+        time = {
+          servers = [
+            "0.ru.pool.ntp.org",
+            "1.ru.pool.ntp.org",
+            "2.ru.pool.ntp.org",
+            "3.ru.pool.ntp.org",
+          ]
+        }
+        nodeLabels = {
+          role = "data"
+        }
+      }
+    })
+  ]
 }
 
 resource "mikrotik_dns_record" "nestor_master" {

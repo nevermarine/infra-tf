@@ -36,18 +36,19 @@ No modules.
 | [mikrotik_dns_record.patchy](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.talos_master](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.talos_worker](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
+| [null_resource.nestor_trigger](https://registry.terraform.io/providers/hashicorp/null/3.2.3/docs/resources/resource) | resource |
 | [null_resource.talos_master_trigger](https://registry.terraform.io/providers/hashicorp/null/3.2.3/docs/resources/resource) | resource |
 | [null_resource.talos_worker_trigger](https://registry.terraform.io/providers/hashicorp/null/3.2.3/docs/resources/resource) | resource |
 | [proxmox_virtual_environment_download_file.rocky_lvm](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_download_file) | resource |
+| [proxmox_virtual_environment_download_file.talos_data_image](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_download_file) | resource |
 | [proxmox_virtual_environment_download_file.talos_image](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_download_file) | resource |
 | [proxmox_virtual_environment_file.lb](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
 | [proxmox_virtual_environment_file.master](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
-| [proxmox_virtual_environment_file.nestor](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
 | [proxmox_virtual_environment_file.ran](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
 | [proxmox_virtual_environment_file.worker](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_file) | resource |
 | [proxmox_virtual_environment_vm.lb](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
 | [proxmox_virtual_environment_vm.master](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
-| [proxmox_virtual_environment_vm.nestor_master](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
+| [proxmox_virtual_environment_vm.nestor](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
 | [proxmox_virtual_environment_vm.ran](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
 | [proxmox_virtual_environment_vm.talos_master](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
 | [proxmox_virtual_environment_vm.talos_worker](https://registry.terraform.io/providers/bpg/proxmox/0.66.1/docs/resources/virtual_environment_vm) | resource |
@@ -55,10 +56,12 @@ No modules.
 | [talos_cluster_kubeconfig.kubeconfig](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/cluster_kubeconfig) | resource |
 | [talos_machine_bootstrap.bootstrap](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/machine_bootstrap) | resource |
 | [talos_machine_configuration_apply.machineconfig_master_apply](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/machine_configuration_apply) | resource |
+| [talos_machine_configuration_apply.machineconfig_nestor_appl](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/machine_configuration_apply) | resource |
 | [talos_machine_configuration_apply.machineconfig_worker_apply](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/machine_configuration_apply) | resource |
 | [talos_machine_secrets.machine_secrets](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/machine_secrets) | resource |
 | [talos_client_configuration.talosconfig](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/client_configuration) | data source |
 | [talos_cluster_health.health](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/cluster_health) | data source |
+| [talos_image_factory_urls.data_image](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/image_factory_urls) | data source |
 | [talos_image_factory_urls.image](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/image_factory_urls) | data source |
 | [talos_machine_configuration.machineconfig_master](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/machine_configuration) | data source |
 | [talos_machine_configuration.machineconfig_worker](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/machine_configuration) | data source |

@@ -6,6 +6,13 @@ resource "proxmox_virtual_environment_download_file" "talos_image" {
   url          = data.talos_image_factory_urls.image.urls.iso
 }
 
+resource "proxmox_virtual_environment_download_file" "talos_data_image" {
+  content_type = "iso"
+  datastore_id = "local"
+  file_name    = "talos-${data.talos_image_factory_urls.data_image.talos_version}-data.iso"
+  node_name    = var.target_node
+  url          = data.talos_image_factory_urls.data_image.urls.iso
+}
 resource "proxmox_virtual_environment_download_file" "rocky_lvm" {
   content_type = "iso"
   datastore_id = "local"

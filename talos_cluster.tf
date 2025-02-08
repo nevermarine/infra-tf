@@ -113,8 +113,9 @@ data "talos_cluster_health" "health" {
   depends_on           = [talos_machine_configuration_apply.machineconfig_master_apply, talos_machine_configuration_apply.machineconfig_worker_apply]
   client_configuration = data.talos_client_configuration.talosconfig.client_configuration
   control_plane_nodes  = [for i in mikrotik_dns_record.talos_master : i.address]
-  worker_nodes         = [for i in mikrotik_dns_record.talos_worker : i.address]
-  endpoints            = data.talos_client_configuration.talosconfig.endpoints
+  worker_nodes         = concat([for i in mikrotik_dns_record.talos_worker : i.address], [local.nestor_ip])
+  # worker_nodes         = [for i in mikrotik_dns_record.talos_worker : i.address]
+  endpoints = data.talos_client_configuration.talosconfig.endpoints
 }
 
 resource "talos_cluster_kubeconfig" "kubeconfig" {

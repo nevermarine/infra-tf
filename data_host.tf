@@ -81,6 +81,7 @@ resource "proxmox_virtual_environment_vm" "nestor" {
     id     = "0000:04:00.0"
     pcie   = true
   }
+  boot_order = ["scsi0", "ide0"]
 }
 
 resource "talos_machine_configuration_apply" "machineconfig_nestor_appl" {
@@ -103,8 +104,11 @@ resource "talos_machine_configuration_apply" "machineconfig_nestor_appl" {
             "3.ru.pool.ntp.org",
           ]
         }
-        nodeLabels = {
-          role = "data"
+        # nodeLabels = {
+        #   role = "data"
+        # }
+        nodeTaints = {
+          role = "data:NoSchedule"
         }
       }
     })

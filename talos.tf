@@ -10,7 +10,7 @@ locals {
   talos_master_cpu        = 2
   talos_master_ram        = 4096
   talos_master_disk       = 30
-  talos_master_count      = 3
+  talos_master_count      = 1
   talos_k8s_initial_cidr  = "10.0.0.0/24"
   talos_k8s_subnet_offset = 31
   # talos_image             = "local:iso/nocloud-amd64.iso"
@@ -83,7 +83,7 @@ resource "proxmox_virtual_environment_vm" "talos_master" {
     datastore_id = "local-lvm"
     interface    = "scsi0"
   }
-  # boot_order = ["scsi0"]
+  boot_order = ["scsi0", "ide0"]
 }
 
 resource "mikrotik_dns_record" "talos_master" {
@@ -162,7 +162,7 @@ resource "proxmox_virtual_environment_vm" "talos_worker" {
     datastore_id = "local-lvm"
     interface    = "scsi1"
   }
-  # boot_order = ["scsi0"]
+  boot_order = ["scsi0", "ide0"]
 }
 
 resource "mikrotik_dns_record" "talos_worker" {

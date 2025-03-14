@@ -5,8 +5,8 @@ locals {
 }
 
 data "talos_image_factory_urls" "image" {
-  talos_version = "v1.8.3"
-  schematic_id  = "6adc7e7fba27948460e2231e5272e88b85159da3f3db980551976bf9898ff64b"
+  talos_version = "v1.9.3"
+  schematic_id  = "ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515"
   platform      = "nocloud"
 }
 
@@ -109,17 +109,18 @@ resource "talos_machine_bootstrap" "bootstrap" {
   node                 = mikrotik_dns_record.talos_master[0].address
 }
 
-data "talos_cluster_health" "health" {
-  depends_on           = [talos_machine_configuration_apply.machineconfig_master_apply, talos_machine_configuration_apply.machineconfig_worker_apply]
-  client_configuration = data.talos_client_configuration.talosconfig.client_configuration
-  control_plane_nodes  = [for i in mikrotik_dns_record.talos_master : i.address]
-  worker_nodes         = concat([for i in mikrotik_dns_record.talos_worker : i.address], [local.nestor_ip])
-  # worker_nodes         = [for i in mikrotik_dns_record.talos_worker : i.address]
-  endpoints = data.talos_client_configuration.talosconfig.endpoints
-}
+# data "talos_cluster_health" "health" {
+#   depends_on           = [talos_machine_configuration_apply.machineconfig_master_apply, talos_machine_configuration_apply.machineconfig_worker_apply]
+#   client_configuration = data.talos_client_configuration.talosconfig.client_configuration
+#   control_plane_nodes  = [for i in mikrotik_dns_record.talos_master : i.address]
+#   worker_nodes         = concat([for i in mikrotik_dns_record.talos_worker : i.address], [local.nestor_ip])
+#   # worker_nodes         = [for i in mikrotik_dns_record.talos_worker : i.address]
+#   endpoints = data.talos_client_configuration.talosconfig.endpoints
+# }
 
 resource "talos_cluster_kubeconfig" "kubeconfig" {
-  depends_on           = [talos_machine_bootstrap.bootstrap, data.talos_cluster_health.health]
+  # depends_on           = [talos_machine_bootstrap.bootstrap, data.talos_cluster_health.health]
+  depends_on           = [talos_machine_bootstrap.bootstrap]
   client_configuration = talos_machine_secrets.machine_secrets.client_configuration
   node                 = local.talos_cluster_vip
 }

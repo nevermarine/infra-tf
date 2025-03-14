@@ -3,20 +3,20 @@ locals {
   master_name       = "kmaster"
   k8s_start_id      = 301
   worker_cpu        = 4
-  worker_ram        = 4096
+  worker_ram        = 2048
   worker_disk       = 30
-  worker_count      = 3
+  worker_count      = 2
   master_cpu        = 2
   master_ram        = 4096
   master_disk       = 30
-  master_count      = 3
+  master_count      = 1
   k8s_initial_cidr  = "10.0.1.0/24"
   k8s_subnet_offset = 11
 }
 
 resource "proxmox_virtual_environment_vm" "master" {
-  on_boot   = false
-  started   = false
+  on_boot   = true
+  started   = true
   count     = local.master_count
   name      = "${local.master_name}${count.index + 1}"
   node_name = var.target_node
@@ -30,7 +30,7 @@ resource "proxmox_virtual_environment_vm" "master" {
   }
 
   agent {
-    enabled = false
+    enabled = true
   }
 
   memory {
@@ -57,7 +57,7 @@ resource "proxmox_virtual_environment_vm" "master" {
 
   disk {
     size         = local.master_disk
-    file_id      = "local:iso/almalinux9.3.qcow2.img"
+    file_id      = "local:iso/Rocky-9-GenericCloud-LVM-9.4-20240609.0.x86_64.qcow2.iso"
     datastore_id = "local-lvm"
     interface    = "scsi0"
   }
@@ -100,9 +100,15 @@ resource "proxmox_virtual_environment_file" "master" {
   }
 }
 
+resource "mikrotik_dns_record" "k8s_master" {
+  count   = local.master_count
+  name    = "${local.master_name}${count.index + 1}.home"
+  address = cidrhost(local.k8s_initial_cidr, local.k8s_subnet_offset + count.index)
+}
+
 resource "proxmox_virtual_environment_vm" "worker" {
-  on_boot   = false
-  started   = false
+  on_boot   = true
+  started   = true
   count     = local.worker_count
   name      = "${local.worker_name}${count.index + 1}"
   node_name = var.target_node
@@ -116,7 +122,7 @@ resource "proxmox_virtual_environment_vm" "worker" {
   }
 
   agent {
-    enabled = false
+    enabled = true
   }
 
   memory {
@@ -143,7 +149,7 @@ resource "proxmox_virtual_environment_vm" "worker" {
 
   disk {
     size         = local.worker_disk
-    file_id      = "local:iso/almalinux9.3.qcow2.img"
+    file_id      = "local:iso/Rocky-9-GenericCloud-LVM-9.4-20240609.0.x86_64.qcow2.iso"
     datastore_id = "local-lvm"
     interface    = "scsi0"
   }
@@ -184,4 +190,10 @@ resource "proxmox_virtual_environment_file" "worker" {
 
     file_name = "cloud-config-${local.worker_name}${count.index + 1}-${local.k8s_start_id + count.index}.yaml"
   }
+}
+
+resource "mikrotik_dns_record" "k8s_worker" {
+  count   = local.worker_count
+  name    = "${local.worker_name}${count.index + 1}.home"
+  address = cidrhost(local.k8s_initial_cidr, local.k8s_subnet_offset + local.master_count + count.index)
 }

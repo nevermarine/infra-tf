@@ -27,6 +27,8 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [mikrotik_dns_record.k8s_master](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
+| [mikrotik_dns_record.k8s_worker](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.lb](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.nas](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
 | [mikrotik_dns_record.nestor_master](https://registry.terraform.io/providers/ddelnano/mikrotik/0.16.1/docs/resources/dns_record) | resource |
@@ -60,7 +62,6 @@ No modules.
 | [talos_machine_configuration_apply.machineconfig_worker_apply](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/machine_configuration_apply) | resource |
 | [talos_machine_secrets.machine_secrets](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/resources/machine_secrets) | resource |
 | [talos_client_configuration.talosconfig](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/client_configuration) | data source |
-| [talos_cluster_health.health](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/cluster_health) | data source |
 | [talos_image_factory_urls.data_image](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/image_factory_urls) | data source |
 | [talos_image_factory_urls.image](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/image_factory_urls) | data source |
 | [talos_machine_configuration.machineconfig_master](https://registry.terraform.io/providers/siderolabs/talos/0.7.0-alpha.0/docs/data-sources/machine_configuration) | data source |

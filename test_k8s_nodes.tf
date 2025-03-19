@@ -15,8 +15,6 @@ locals {
 }
 
 resource "proxmox_virtual_environment_vm" "master" {
-  on_boot   = true
-  started   = true
   count     = local.master_count
   name      = "${local.master_name}${count.index + 1}"
   node_name = var.target_node
@@ -107,8 +105,6 @@ resource "mikrotik_dns_record" "k8s_master" {
 }
 
 resource "proxmox_virtual_environment_vm" "worker" {
-  on_boot   = true
-  started   = true
   count     = local.worker_count
   name      = "${local.worker_name}${count.index + 1}"
   node_name = var.target_node
